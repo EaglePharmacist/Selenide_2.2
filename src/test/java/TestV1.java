@@ -2,6 +2,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -20,7 +21,8 @@ public class TestV1 {
         open ("http://localhost:9999");
         $("[data-test-id='city'] input").setValue("Рязань");
         String currentDate = generateDate(3, "dd.MM.uuuu");
-        $("[data-test-id='date'] input").setValue("14.07.2025");
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
+        $("[data-test-id='date'] input").sendKeys(currentDate);
         $("[data-test-id='name'] input").setValue("Иванов Иван");
         $("[data-test-id='phone'] input").setValue("+79536253636");
         $("[data-test-id='agreement']").click();
